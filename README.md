@@ -6,5 +6,4 @@ sudo: executar como adm
 chmod: permitir
 -R : significa que se aplica a minha pasta diretoria
 . : pasta diretoria (pasta)
-
-OIOIOIOo
+oiooooioio
