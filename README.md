@@ -5,7 +5,11 @@ dar permissao para pastas no linux: sudo chmod 777 -R .
 sudo: executar como adm
 chmod: permitir
 -R : significa que se aplica a minha pasta diretoria
+<<<<<<< HEAD
 . : pasta diretoria (pasta)
 Testando
 
 
+=======
+MUDANDSAD
+>>>>>>> 3045956d1a1427de9cfbfa508ccb772d7372c48d
