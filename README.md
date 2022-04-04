@@ -10,6 +10,5 @@ chmod: permitir
 Testando
 
 
-=======
-MUDANDSAD
->>>>>>> 3045956d1a1427de9cfbfa508ccb772d7372c48d
+
+
