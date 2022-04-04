@@ -13,3 +13,7 @@ table , tr#corpo,  th, td
     border: 1px solid black;
 
 }
+
+button#del{
+    text-align: right;
+}
