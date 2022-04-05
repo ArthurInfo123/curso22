@@ -1,6 +1,6 @@
 ## curso22
 
-Estou no Dev
+
 
 dar permissao para pastas no linux: sudo chmod 777 -R .
 
