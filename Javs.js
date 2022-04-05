@@ -3,10 +3,11 @@ let totusuarios = 0
 function cadastrar()
       
 {      
-   
-      let nome = document.getElementById('nome').value
-      let Entrada = document.getElementById('Data de entrada').value
       let cpf = document.getElementById('CPF').value
+      if(QuantNum(cpf) == true){
+      
+      let nome = document.getElementById('nome').value
+      let Entrada = document.getElementById('Data de entrada').value      
       let telefone = document.getElementById('Telefone').value 
       
       let corpo = document.getElementById('corpo')     
@@ -46,7 +47,10 @@ function cadastrar()
            
       
       totusuarios ++
-
+      }
+      else{
+            alert('Cadastro Invalido')
+      }
 
 }
 
@@ -63,5 +67,19 @@ function deletar()
                var agora = document.getElementById('corpo').deleteRow(c)
       }
 
+
+}
+
+
+function QuantNum(e)
+{
+      if(e.length == 11)
+      {
+            return true
+      }
+      else if(e.length < 11 || e.length > 12)
+      {
+            return false
+      }
 
 }
