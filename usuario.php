@@ -120,6 +120,45 @@
                 break; 
            }
 
+           $numero = [4,2,5,1,10,100,50,3,9,12];
+           $pares = [];
+           $impar = [];           
+           $contpar = 0;
+           $contImpar = 0;
+           $tamanhoNumeros = count($numero);
+           for($is = 0; $is < $tamanhoNumeros; $is++)
+           {
+               $restos = $numero[$is] % 2;
+               if($restos == 0)
+               {
+                   $contpar += 1;
+                   $pares[$is] = $numero[$is];
+                   
+               }
+               else
+               {
+                   $contImpar += 1;
+                   $impar[$is] = $numero[$is];
+
+               }
+
+           }   
+           echo "<br>";      
+           
+
+           echo "<br>";
+           echo " Numero de pares{$contpar}";
+           echo "<br>";
+           echo " Numero de impares {$contImpar}<br>";
+
+           print_r($pares);
+           echo "<br>";
+           print_r($impar);
+
+        
+
+
+
  
         ?>  
     </body>
