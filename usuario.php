@@ -156,10 +156,35 @@
            print_r($impar);
 
         
+        
+        
+        $numerosPrimos = [2];
+        $numerosNaoPrimos = [];
+        $numeros = 0;
+        
+        for($divisao = 2; $divisao < 15; $divisao++)
+        {
+           for($divisores = 2; $divisores < 15; $divisores++)
+           {
+               $resultado = $divisao / $divisores;
+               $resto = $divisao % $divisores;
+               if($resto == 0)
+               {
+                   continue;
+               }
+               if($resultado < $divisores && $resto != 0)
+               {
+                   $numerosPrimos[$divisao] = $divisao;
+               }
+           }
+        }     
+        echo "<br>";
+        print_r($numerosPrimos);
 
-
-
- 
+       
+      
+         
+  
         ?>  
     </body>
 </html>
