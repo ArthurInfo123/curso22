@@ -42,3 +42,5 @@ $dadosPessoa = [
     header('Content-Type: application/json; charset=ute-8');
     echo json_encode($dadosPessoa);
     exit();
+
+    
