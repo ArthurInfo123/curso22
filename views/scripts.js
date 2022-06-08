@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 
 function mask_cpf(i){
  
@@ -60,10 +60,5 @@ function mask_cep(i){
 
 
 
-=======
-$( document ).ready(function() {
-    $(".btnEditar").on("click", function(){
-        var id = $(this).val();
-        console.log("Ready! Ricardo id: " + id);
-    })
->>>>>>> a315d662a2cc65780a9a6153bf6fcbd810da300d
+
+
