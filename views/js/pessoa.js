@@ -1,84 +1,79 @@
 $( document ).ready(function() {
-      var baseUrl = "http://localhost/curso22/controlers/pessoacontroler.php"
+      var url = "http://localhost/curso22/controlers/pessoacontroler.php"
+      $.get(url).done(function(response) {
+       montarTabela(response);
+   }).fail(function(error) {
+       console.log("Deu erro: " + JSON.stringify(error));
+   });
 
-    $(".btnSalvar").on("click", function(){
-           var idPessoa = $(this).val();
-           baseUrl += "?id=" + idPessoa
-           $.get(baseUrl).done(function (response)
-           {
-                  //html --> back
-                  $('#nome').val(response[0].nome)
-                  $('#email').val(response[0].email)
-                  $("#tel").val(response[0].phone)
-                  $("#cep").val(response[0].cep)
-                  $("#sexo").val(response[0].gender)
-                  console.log(response)
-                  $('.modal').modal('show')
-
-                  console.log(JSON.stringify(response))
-           })
+   $("#tabelaPessoas").on("click", ".btnEditar", function() {
+       var id = $(this).val();
+       var urlComId = url + "?id=" + id;
        
-           console.log('Sou o clicar do editar id' + idPessoa)
+       $.get(urlComId).done(function(response) {
+           // console.log("sou o response: " + JSON.stringify(response));
 
-    });
+           $("#idPessoa").val(response[0].id);
+           $("#nomePessoa").val(response[1].nome);
+           $("#email").val(response[1].email)
+           $("#phone").val(response[1].phone)
+           $("#cep").val(response[1].cep)
+           $("#staticBackdropLabel").html("Editar");
+           $("#staticBackdrop").modal("show");
+           // $("#staticBackdrop").modal("hide"); // fechar o modal
 
-    $("#btnExcluir").on("click", function(){
-        console.log("Sou o clicar do excluir");
+       });
+   });
 
+   $("#tabelaPessoas .btnExcluir").on("click", function() {
+       console.log("sou o clicar do excluir");
+   });
+
+   function montarTabela (dados) {
+       var cabecalho = montarCabecalho();
+       var dados = montarDados(dados);
+       var htmlTabela = (cabecalho + dados);
+       $("#tabelaPessoas").html(htmlTabela);
+   }
+
+   function montarCabecalho () {
+       var cabecalho = (
+           `<thead>
+               <tr>
+                   <th scope="col">id</th>
+                   <th scope="col">Nome</th>
+                   <th scope="col">E-mail</th>
+                   <th scope="col">Phone</th>
+                   <th scope="col">Cep</th>
+                   <th scope="col">Ações</th>
+               </tr>
+           </thead>`
+       );
+
+       return cabecalho;
+   }
    
-       
+   function montarDados (dados) {
+       var tbody = `<tbody>`;
 
- });
-
-    function montarCabecalho()
-    {
-           var html = (
-                  `
-                  <thead>
-                  <tr> 
-                      <th> Nome </th>
-                      <th> Cep</th>
-                      <th> TELEFONE</th>
-                      <th> </th>
-                      <th> </th>
-                      <th> </th>               
-                                  
-                  </tr>
-                  </thead>
-                  `
-
+       $.each(dados, function(idx, pessoa) {
+           tbody += (
+               `<tr>
+                   <td>${pessoa.id}</td>
+                   <td>${pessoa.nome}</td>
+                   <td>${pessoa.email}</td>
+                   <td>${pessoa.phone}</td>
+                   <td>${pessoa.cep}</td>
+                   <td>
+                       <button class="btnEditar" value="${pessoa.id}">Editar</button>
+                       <button class="btnExcluir" value="${pessoa.id}">Excluir</button>
+                   </td>
+               </tr>`
            );
-           return html;
-    }
-   
-   
-    function montarDados(pessoas)
-    {
-           var tbody = '<tbody>'
-           var tr = ''
-           $.each(pessoas,function(idx, pessoa)
-           {
-               tr += (
-                     `
-                     
-                     <tr> 
-                            <th scope=row>  ${pessoa.id}  </th>
-                            <td>  ${pessoa.nome} </td>
-                            <td>  ${pessoa.email}. </td>
-                            <td>  ${pessoa.phone} </td>
-                            <td>  ${pessoa.cep} </td>
-                            <td> . ${pessoa.gender} </td>
-                     <td>" . $pessoa["type"]. "</td>
-                            <td> . $pessoa["satus"]. </td> 
-                     </tr>
-                     
-                     `
-   
-              );
-              return html    
-           }
-           )
-            
-          
-    }
+       });
+
+       tbody += "</tbody>";
+
+       return tbody;
+   }
 });

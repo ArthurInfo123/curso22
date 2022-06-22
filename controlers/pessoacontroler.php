@@ -28,7 +28,7 @@
 //  $pessoa->create($pessoa_juridica);
 $idPessoa = $_REQUEST["id"] ?? 0;
 
-    $dadosPessoa = 
+    $dados_pessoa = 
     [
         [
             "id" => 10,
@@ -55,20 +55,20 @@ $idPessoa = $_REQUEST["id"] ?? 0;
 $i = 0;
 $pessoa = [];
 
-while($i < count($dadosPessoa))
-{
-    $id = $dadosPessoa[$i]["id"];
+// while($i < count($dados_pessoa))
+// {
+//     $id = $dados_pessoa[$i]["id"];
     
-    if($idPessoa == $id)
-    {
-        $pessoa[] = $dadosPessoa[$i];
-        break;
-    }
+//     if($idPessoa == $id)
+//     {
+//         $pessoa[] = $dados_pessoa[$i];
+//         break;
+//     }
     
-    $i++;
-}
+//     $i++;
 
-    header('Content-Type: application/json; charset=ute-8');
-    echo json_encode($pessoa);
-    exit();
+
+    header('Content-Type: application/json; charset=utf-8');
+    echo json_encode($dados_pessoa);
+    
 
