@@ -1,15 +1,17 @@
 $( document ).ready(function() {
-      var url = "http://localhost/curso22/controlers/pessoacontroler.php"
-      $.get(url).done(function(response) {
+      var url = "http://localhost/curso22/controlers/pessoacontroler.php" 
+      var urlListarTodas = url + "?rota=ListarTodasPessoas"           
+      $.get(urlListarTodas).done(function(response) {     
        montarTabela(response);
+       
    }).fail(function(error) {
        console.log("Deu erro: " + JSON.stringify(error));
    });
 
    $("#tabelaPessoas").on("click", ".btnEditar", function() {
        var id = $(this).val();
-       var urlComId = url + "?id=" + id;
-       
+       var urlComId = url + "?id=" + id + "&rota=editarUsuario";
+      
        $.get(urlComId).done(function(response) {
            // console.log("sou o response: " + JSON.stringify(response));
 
@@ -19,13 +21,15 @@ $( document ).ready(function() {
            $("#phone").val(response[1].phone)
            $("#cep").val(response[1].cep)
            $("#staticBackdropLabel").html("Editar");
-           $("#staticBackdrop").modal("show");
+           $("#staticBackdrop").modal("show");           
            // $("#staticBackdrop").modal("hide"); // fechar o modal
-
+           $("#staticBackdropLabel").html("Cadastrar");
        });
+       
    });
 
    $("#tabelaPessoas .btnExcluir").on("click", function() {
+       $("#staticBackdropLabel").html("Cadastro");
        console.log("sou o clicar do excluir");
    });
 
@@ -67,13 +71,15 @@ $( document ).ready(function() {
                    <td>
                        <button class="btnEditar" value="${pessoa.id}">Editar</button>
                        <button class="btnExcluir" value="${pessoa.id}">Excluir</button>
+                       
                    </td>
                </tr>`
+               
            );
        });
 
-       tbody += "</tbody>";
-
+       tbody += "</tbody>";       
        return tbody;
    }
+   
 });

@@ -81,7 +81,17 @@
             width: 150px;
         }
        }
-
+       @media(max-width: 120px)
+       {
+        table tr, table th, table td
+        {
+            width: 110px;
+        } 
+        button
+        {
+             width: 5px
+        }
+       }
        
 
 
